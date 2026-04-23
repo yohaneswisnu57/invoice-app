@@ -14,6 +14,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::resource('clients', ClientController::class)->middleware('auth');
+
 Route::prefix('clients')->middleware('auth')->group(function () {
     Route::get('/', [ClientController::class, 'index'])->name('clients.index');
     Route::get('/create', [ClientController::class, 'create'])->name('clients.create');

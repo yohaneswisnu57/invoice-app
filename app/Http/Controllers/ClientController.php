@@ -12,8 +12,14 @@ class ClientController extends Controller
      */
     public function index()
     {
+        $start = microtime(true);
         $clients = Client::paginate(10);
-        return view('client.index', compact('clients'));
+        $queryTime = round((microtime(true) - $start) * 1000, 2);
+
+        // Calculate total time from Laravel start
+        $totalTime = round((microtime(true) - LARAVEL_START) * 1000, 2);
+
+        return view('client.index', compact('clients', 'queryTime', 'totalTime'));
     }
 
     /**

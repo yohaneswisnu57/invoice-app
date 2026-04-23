@@ -103,8 +103,41 @@
                     </div>
                 </div>
                 @if ($clients->hasPages())
-                    <div class="px-6 py-4 bg-gray-50 dark:bg-gray-700/50 border-t border-gray-100 dark:border-gray-700">
-                        {{ $clients->links() }}
+                    <div class="px-6 py-4 bg-gray-50 dark:bg-gray-700/50 border-t border-gray-100 dark:border-gray-700 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                        <div class="flex-grow">
+                            {{ $clients->links() }}
+                        </div>
+                        <div class="flex items-center space-x-4 text-xs text-gray-400 dark:text-gray-500 font-mono">
+                            <div class="flex items-center">
+                                <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2 1.5 3 3.5 3s3.5-1 3.5-3V7c0-2-1.5-3-3.5-3S4 5 4 7z M12 7v10c0 2 1.5 3 3.5 3s3.5-1 3.5-3V7c0-2-1.5-3-3.5-3S12 5 12 7z"/>
+                                </svg>
+                                DB: {{ $queryTime }}ms
+                            </div>
+                            <div class="flex items-center">
+                                <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                                Total: {{ $totalTime }}ms
+                            </div>
+                        </div>
+                    </div>
+                @else
+                    <div class="px-6 py-3 bg-gray-50 dark:bg-gray-700/50 border-t border-gray-100 dark:border-gray-700 flex justify-end">
+                        <div class="flex items-center space-x-4 text-xs text-gray-400 dark:text-gray-500 font-mono">
+                            <div class="flex items-center">
+                                <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2 1.5 3 3.5 3s3.5-1 3.5-3V7c0-2-1.5-3-3.5-3S4 5 4 7z M12 7v10c0 2 1.5 3 3.5 3s3.5-1 3.5-3V7c0-2-1.5-3-3.5-3S12 5 12 7z"/>
+                                </svg>
+                                DB: {{ $queryTime }}ms
+                            </div>
+                            <div class="flex items-center">
+                                <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                                Total: {{ $totalTime }}ms
+                            </div>
+                        </div>
                     </div>
                 @endif
             </div>
